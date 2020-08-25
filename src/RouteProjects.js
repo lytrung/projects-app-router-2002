@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
-import Project from './Project';
+import React, {Component} from 'react'
+import Project from './Project'
+import API from './API'
 
 class RouteProjects extends Component {
 
@@ -18,6 +19,12 @@ class RouteProjects extends Component {
         }
       ]
     }
+  }
+
+  componentDidMount(){
+    API.getProjects().then(res => {
+      this.setState({projects:res.data})
+    })
   }
 
   render(){
