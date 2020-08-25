@@ -1,10 +1,20 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {navigate} from '@reach/router'
+import API from './API'
 
 class RouteAddProject extends Component {
 
   handleFormSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    var formData = new FormData(this.form);
+
+    var data = {
+      name:formData.get('name-input'),
+      description:formData.get('description-input'),
+      type_id:formData.get('type-input')
+    }
+
+    API.addProjects(data).then(res => navigate('/projects'))
   
   }
 
