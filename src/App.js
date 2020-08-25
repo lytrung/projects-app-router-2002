@@ -30,11 +30,6 @@ class App extends Component {
             <RouteAddProject path="projects/create" />
             <RouteEditProject path="projects/:id/edit" />
           </Router>
-
-          
-
-
-
         
       </div>
     );

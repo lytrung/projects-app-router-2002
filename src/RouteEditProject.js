@@ -32,7 +32,7 @@ class RouteEditProject extends Component {
       type_id:formData.get('type-input')
     }
     var {id} = this.props;
-    API.updateProjects(id,data).then(res => navigate('/projects'))
+    API.updateProject(id,data).then(res => navigate('/projects'))
 
   
   }

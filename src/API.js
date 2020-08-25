@@ -10,12 +10,16 @@ var API = {
     getSingleProject : (id) => {
         return axios.get(urlPrefix+'/projects/'+id)
     },
-    addProjects : (data) => {
+    addProject : (data) => {
         return axios.post(urlPrefix+'/projects',data)
     },
-    updateProjects : (id,data) => {
+    updateProject : (id,data) => {
         return axios.put(urlPrefix+'/projects/'+id,data)
     },
+    deleteProject : (id) => {
+        return axios.delete(urlPrefix+'/projects/'+id)
+    
+    }
 
 }
 
