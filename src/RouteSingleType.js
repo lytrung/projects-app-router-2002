@@ -7,15 +7,19 @@ class RouteSingleType extends Component {
   constructor(props){
     super(props)
     this.state = {
-      type:null
+      type:null,
     }
   }
 
-  componentDidMount(){
+  loadType = () => {
     var {id} = this.props
     API.getSingleType(id).then(res => this.setState({type:res.data}))
   }
 
+  componentDidMount(){
+    this.loadType()
+  }
+  
   render(){
     var {type} = this.state
 
@@ -28,6 +32,7 @@ class RouteSingleType extends Component {
             var projectProps = {
               ...project,
               key: project.id,
+              loadProjects:this.loadType,
             };
             return (<Project {...projectProps} />)
           })
