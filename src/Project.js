@@ -9,11 +9,8 @@ class  Project extends Component {
 		API.deleteProject(id)
 		loadProjects()
 	}
-
   	render(){
-
 	  	var {name,description,id} = this.props
-
 	    return (
 	      <div className="card project">
 	        <img className="card-img-top" src="project.jpg" alt="Card image cap" />
@@ -27,7 +24,7 @@ class  Project extends Component {
 	          </p>
 	        </div>
 	      </div>
-	    );
+	    )
   	}
 }
 

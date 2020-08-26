@@ -18,8 +18,10 @@ var API = {
     },
     deleteProject : (id) => {
         return axios.delete(urlPrefix+'/projects/'+id)
-    
-    }
+    },
+    getSingleType : (id) => {
+        return axios.get(urlPrefix+'/types/'+id)
+    },
 
 }
 
