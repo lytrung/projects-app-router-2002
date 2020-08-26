@@ -19,6 +19,9 @@ var API = {
     deleteProject : (id) => {
         return axios.delete(urlPrefix+'/projects/'+id)
     },
+    getTypes : () => {
+        return axios.get(urlPrefix+'/types')
+    },
     getSingleType : (id) => {
         return axios.get(urlPrefix+'/types/'+id)
     },

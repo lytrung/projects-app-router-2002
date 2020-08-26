@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import Project from './Project';
-import API from './API';
+import React, {Component} from 'react'
+import Project from './Project'
+import API from './API'
 
 class RouteSingleType extends Component {
 
