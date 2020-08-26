@@ -19,6 +19,14 @@ class RouteSingleType extends Component {
   componentDidMount(){
     this.loadType()
   }
+
+  componentDidUpdate(prevProps, prevState){
+    var {id} = this.props
+
+    if(id != prevProps.id){
+      this.loadType()
+    }
+  }
   
   render(){
     var {type} = this.state
