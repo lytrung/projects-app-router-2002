@@ -40,7 +40,7 @@ class RouteSingleType extends Component {
             var projectProps = {
               ...project,
               key: project.id,
-              loadProjects:this.loadType,
+              loadProjects:this.loadType, //red flag: to match to name in RoutProjects
             };
             return (<Project {...projectProps} />)
           })

@@ -30,10 +30,10 @@ class App extends Component {
             <span>Welcome Peter</span> <i class="fas fa-bars"></i>
             <ul class="menu">
               <li><Link to="projects">All Projects</Link></li>
-              <li><Link to="projects/create">Add a project</Link></li>
               {
                 types.map(type => <li><Link to={'/types/'+type.id}>{type.name}</Link></li>)
               }
+              <li><Link to="projects/create">Add a project</Link></li>
               <li><a href="">Login</a></li>
               <li><a href="">Signup</a></li>
             </ul>
