@@ -6,6 +6,7 @@ import RouteProjects from './RouteProjects'
 import RouteAddProject from './RouteAddProject'
 import RouteEditProject from './RouteEditProject'
 import RouteSingleType from './RouteSingleType'
+import RouteAddUser from './RouteAddUser'
 
 import './App.css';
 
@@ -35,7 +36,8 @@ class App extends Component {
               }
               <li><Link to="projects/create">Add a project</Link></li>
               <li><a href="">Login</a></li>
-              <li><a href="">Signup</a></li>
+              <li><Link to="/users/create">Sign up</Link></li>
+            
             </ul>
           </div>
 
@@ -44,6 +46,7 @@ class App extends Component {
             <RouteSingleType path="/types/:id" />
             <RouteAddProject path="projects/create" />
             <RouteEditProject path="projects/:id/edit" />
+            <RouteAddUser path="/users/create" />
           </Router>
         
       </div>

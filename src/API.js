@@ -25,7 +25,10 @@ var API = {
     getSingleType : (id) => {
         return axios.get(urlPrefix+'/types/'+id)
     },
-
+    addUser : (data) => {
+        return axios.post(urlPrefix+'/users',data)
+    }
+    
 }
 
 export default API
