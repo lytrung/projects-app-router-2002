@@ -27,6 +27,9 @@ var API = {
     },
     addUser : (data) => {
         return axios.post(urlPrefix+'/users',data)
+    },
+    authenticate : (data) => {
+        return axios.post(urlPrefix+'/users/authenticate',data)          
     }
     
 }
