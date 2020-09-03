@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Router, Link } from '@reach/router'
+import { Router, Link, navigate} from '@reach/router'
 import API from './API'
 
 import RouteProjects from './RouteProjects'
@@ -23,6 +23,12 @@ class App extends Component {
 
   setCurrentUser = (user) => {
     this.setState({currentUser:user})
+  }
+  handleLogoutClick = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('userId')
+    this.setState({currentUser:null})
+    navigate('/login')
   }
 
   componentDidMount(){
@@ -54,7 +60,7 @@ class App extends Component {
                 currentUser ? (
                   <>
                   <li><Link to="projects/create">Add a project</Link></li>
-                  <li><a href="#">Logout</a></li>
+                  <li><a onClick={this.handleLogoutClick} href="#">Logout</a></li>
                   </>
                 ) : (
                   <>
