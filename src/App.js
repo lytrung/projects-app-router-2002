@@ -36,7 +36,7 @@ class App extends Component {
                 types.map(type => <li><Link to={'/types/'+type.id}>{type.name}</Link></li>)
               }
               <li><Link to="projects/create">Add a project</Link></li>
-              <li><Link to="/login">Login</Link></li>
+              <li><Link to="/users/authenticate">Login</Link></li>
               <li><Link to="/users/create">Sign up</Link></li>
             
             </ul>
@@ -48,7 +48,7 @@ class App extends Component {
             <RouteAddProject path="projects/create" />
             <RouteEditProject path="projects/:id/edit" />
             <RouteAddUser path="/users/create" />
-            <RouteLogin path="/login" />
+            <RouteLogin path="/users/authenticate" />
 
           </Router>
         
