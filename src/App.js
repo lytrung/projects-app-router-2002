@@ -27,6 +27,12 @@ class App extends Component {
 
   componentDidMount(){
     API.getTypes().then(res => this.setState({types:res.data}))
+
+    //local storage
+    var userId = localStorage.getItem('userId')
+    if(userId){
+      API.getSingleUser(userId).then(res => this.setState({currentUser:res.data}))
+    }
   }
 
   render(){
