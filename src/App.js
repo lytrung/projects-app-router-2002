@@ -17,7 +17,12 @@ class App extends Component {
     super(props)
     this.state = {
       types:[],
+      currentUser: null
     }
+  }
+
+  setCurrentUser = (user) => {
+    this.setState({currentUser:user})
   }
 
   componentDidMount(){
@@ -48,7 +53,7 @@ class App extends Component {
             <RouteAddProject path="projects/create" />
             <RouteEditProject path="projects/:id/edit" />
             <RouteAddUser path="/users/create" />
-            <RouteLogin path="/users/authenticate" />
+            <RouteLogin setCurrentUser={this.setCurrentUser} path="/users/authenticate" />
 
           </Router>
         

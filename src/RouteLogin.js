@@ -11,12 +11,14 @@ class RouteLogin extends Component {
     }
   }
   handleFormSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     var formData = new FormData(this.form);
     var data = {
       username:formData.get('username-input'),
       password:formData.get('password-input'),
     }
+
+    var {setCurrentUser} = this.props
 
     API.authenticate(data)
     .then(res => {
@@ -26,6 +28,7 @@ class RouteLogin extends Component {
     .then(user => {
       if(user){
         console.log(user.name + 'has logged in')
+        setCurrentUser(user)
         navigate('/projects')
       }else{
         this.setState({message:'Try again'})
