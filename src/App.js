@@ -30,19 +30,34 @@ class App extends Component {
   }
 
   render(){
-    var {types} = this.state
+    var {types, currentUser} = this.state
     return (
       <div className="app">
           <div class="header">
-            <span>Welcome Peter</span> <i class="fas fa-bars"></i>
+            {
+              currentUser? (<span>Welcome {currentUser.name}</span>) : null
+            }
+            <i class="fas fa-bars"></i>
             <ul class="menu">
               <li><Link to="projects">All Projects</Link></li>
               {
                 types.map(type => <li><Link to={'/types/'+type.id}>{type.name}</Link></li>)
               }
-              <li><Link to="projects/create">Add a project</Link></li>
-              <li><Link to="/users/authenticate">Login</Link></li>
-              <li><Link to="/users/create">Sign up</Link></li>
+
+              {
+                currentUser ? (
+                  <>
+                  <li><Link to="projects/create">Add a project</Link></li>
+                  <li><a href="#">Logout</a></li>
+                  </>
+                ) : (
+                  <>
+                  <li><Link to="/users/authenticate">Login</Link></li>
+                  <li><Link to="/users/create">Sign up</Link></li>
+                  </>
+                )
+              }
+     
             
             </ul>
           </div>
@@ -50,8 +65,8 @@ class App extends Component {
           <Router>
             <RouteProjects path="projects" />
             <RouteSingleType path="/types/:id" />
-            <RouteAddProject path="projects/create" />
-            <RouteEditProject path="projects/:id/edit" />
+            {currentUser ? <RouteAddProject path="/projects/create" /> : null}
+            {currentUser ? <RouteEditProject path="/projects/:id/edit" /> : null}
             <RouteAddUser path="/users/create" />
             <RouteLogin setCurrentUser={this.setCurrentUser} path="/users/authenticate" />
 
