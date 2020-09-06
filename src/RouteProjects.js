@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Project from './Project';
+import {Spring} from 'react-spring/renderprops'
+import Project from './Project'
 
 class RouteProjects extends Component {
 
@@ -22,20 +23,29 @@ class RouteProjects extends Component {
 
   render(){
     return (
-      <div class="main">
-        <h3>All projects</h3>
-        {
-          this.state.projects.map((project) => {
 
-            var projectProps = {
-              ...project,
-              key: project.id,
-    
-            };
-            return (<Project {...projectProps} />)
-          })
+      <Spring
+        from={{ opacity: 0 }}
+        to={{ opacity: 1 }}>
+        {
+          props => (
+            <div style={props} class="main">
+              <h3>All projects</h3>
+              {
+                this.state.projects.map((project) => {
+
+                  var projectProps = {
+                    ...project,
+                    key: project.id,
+          
+                  };
+                  return (<Project {...projectProps} />)
+                })
+              }
+            </div>
+          )
         }
-      </div>
+      </Spring>
     )
   }
 }
