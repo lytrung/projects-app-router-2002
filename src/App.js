@@ -28,7 +28,7 @@ class App extends Component {
     e.preventDefault()
     localStorage.removeItem('userId')
     this.setState({currentUser:null})
-    navigate('/login')
+    navigate('/users/authenticate')
   }
 
   componentDidMount(){
@@ -77,7 +77,7 @@ class App extends Component {
           <Router>
             <RouteProjects path="projects" />
             <RouteSingleType path="/types/:id" />
-            {currentUser ? <RouteAddProject path="/projects/create" /> : null}
+            {currentUser ? <RouteAddProject currentUser={currentUser} path="/projects/create" /> : null}
             {currentUser ? <RouteEditProject path="/projects/:id/edit" /> : null}
             <RouteAddUser path="/users/create" />
             <RouteLogin setCurrentUser={this.setCurrentUser} path="/users/authenticate" />

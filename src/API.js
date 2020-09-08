@@ -3,6 +3,8 @@ import axios from 'axios';
 var urlPrefix = 'http://localhost:4000/api'
 
 var API = {
+    
+    serverUrl : 'http://localhost:4000/',
 
     getProjects : () => {
         return axios.get(urlPrefix+'/projects')
@@ -33,6 +35,10 @@ var API = {
     },
     authenticate : (data) => {
         return axios.post(urlPrefix+'/users/authenticate',data)          
+    },
+    uploadFile : (formData) => {
+        var settings = { headers: {'Content-Type': 'multipart/form-data' }}
+        return axios.post(urlPrefix+'/upload',formData,settings)
     }
     
 }

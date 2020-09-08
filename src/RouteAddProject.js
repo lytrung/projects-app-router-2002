@@ -6,15 +6,24 @@ class RouteAddProject extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault()
-    var formData = new FormData(this.form);
 
-    var data = {
-      name:formData.get('name-input'),
-      description:formData.get('description-input'),
-      type_id:formData.get('type-input')
-    }
+    var formData = new FormData(this.form)
 
-    API.addProject(data).then(res => navigate('/projects'))
+    API.uploadFile(formData)
+      .then(res => res.data)
+
+      .then(fileName => {
+        var {currentUser} = this.props;
+        var data = {
+          name:formData.get('name-input'),
+          description:formData.get('description-input'),
+          photo: fileName,
+          type_id:formData.get('type-input'),
+          user_id:currentUser.id
+        }
+        API.addProject(data).then(res => navigate('/projects'))
+
+      })
   
   }
 
@@ -33,9 +42,9 @@ class RouteAddProject extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="name-input">Photo</label>
-            <input type="text" className="form-control" name="photo-input" id="photo-input" value="project.jpg"/>
-          </div>
+	          <label htmlFor="name-input">Photo</label>
+	          <input type="file" className="form-control" name="photo-input" id="photo-input"/>
+	        </div>
 
           <div className="form-group">
             <label htmlFor="type-input">Type</label>
